@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>qrcode</title>
+  <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
+  <style>
+    body {
+      width: 330px;
+      padding: 15px 15px;
+    }
+    #buildQrcode {
+      margin-top: 1em;
+    }
+    #buildQrcodeWrap {
+      display: none;
+    }
+    .btn-group {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .bottom {
+      margin-bottom: 1em;
+    }
+    #qrcodeWrap {
+      width: 275px;
+      height: 275px;
+      margin: 0.5em auto;
+    }
+    .extraInfoWrap {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      margin-bottom: 0.5em;
+    }
+    #settings {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">时间(秒)</span>
+    <input type="text" class="form-control" id="time" placeholder="例如10" aria-label="Username"
+      aria-describedby="basic-addon1">
+  </div> -->
+  <div class="extraInfoWrap">
+    <svg id="settings" t="1658477996308" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2389" width="25" height="25"><path d="M439.264 208a16 16 0 0 0-16 16v67.968a239.744 239.744 0 0 0-46.496 26.896l-58.912-34a16 16 0 0 0-21.856 5.856l-80 138.56a16 16 0 0 0 5.856 21.856l58.896 34a242.624 242.624 0 0 0 0 53.728l-58.88 34a16 16 0 0 0-6.72 20.176l0.848 1.68 80 138.56a16 16 0 0 0 21.856 5.856l58.912-34a239.744 239.744 0 0 0 46.496 26.88V800a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16v-67.968a239.744 239.744 0 0 0 46.512-26.896l58.912 34a16 16 0 0 0 21.856-5.856l80-138.56a16 16 0 0 0-4.288-20.832l-1.568-1.024-58.896-34a242.624 242.624 0 0 0 0-53.728l58.88-34a16 16 0 0 0 6.72-20.176l-0.848-1.68-80-138.56a16 16 0 0 0-21.856-5.856l-58.912 34a239.744 239.744 0 0 0-46.496-26.88V224a16 16 0 0 0-16-16h-160z m32 48h96v67.376l28.8 12.576c13.152 5.76 25.632 12.976 37.184 21.52l25.28 18.688 58.448-33.728 48 83.136-58.368 33.68 3.472 31.2a194.624 194.624 0 0 1 0 43.104l-3.472 31.2 58.368 33.68-48 83.136-58.432-33.728-25.296 18.688c-11.552 8.544-24.032 15.76-37.184 21.52l-28.8 12.576V768h-96v-67.376l-28.784-12.576c-13.152-5.76-25.632-12.976-37.184-21.52l-25.28-18.688-58.448 33.728-48-83.136 58.368-33.68-3.472-31.2a194.624 194.624 0 0 1 0-43.104l3.472-31.2-58.368-33.68 48-83.136 58.432 33.728 25.296-18.688a191.744 191.744 0 0 1 37.184-21.52l28.8-12.576V256z m47.28 144a112 112 0 1 0 0 224 112 112 0 0 0 0-224z m0 48a64 64 0 1 1 0 128 64 64 0 0 1 0-128z" p-id="2390"></path></svg>
+  </div>
+  <div id="parseQrcodeWrap">
+    <div class="input-group mb-3">
+      <textarea id="content" class="form-control" aria-label="With textarea" rows="3" cols="33"
+        placeholder="请粘贴二维码图片，解析成功后默认复制到您的剪贴板，可点击右上角设置"></textarea>
+    </div>
+  </div>
+  <div id="buildQrcodeWrap" class="bottom">
+    <div>
+      <span>生成的二维码图片为：</span>
+      <div id="qrcodeWrap" class="mb-3"></div>
+    </div>
+    <div class="inputWrap">
+      <span>生成的二维码链接为(可修改)：</span>
+      <textarea id="urlConiner" class="form-control" aria-label="With textarea" rows="2" cols="33"
+        placeholder="输入url后点击生成二维码"></textarea>
+    </div>
+    <div class="d-grid gap-2">
+      <button type="button" class="btn btn-info" id="buildQrcode">生成二维码</button>
+    </div>
+  </div>
+  <div id="funcGroup" class="btn-group">
+    <a href="#" id="parser" class="btn btn-primary func active" aria-current="page" index="0">解析二维码</a>
+    <a href="#" id="builder" class="btn btn-primary func" index="1">构建二维码</a>
+  </div>
+  <script src="dist/src/index.js"></script>
+  <!-- <script src="./dist/clipboard.js"></script>
+  <script src="./dist/buildQrcode.js"></script>
+  <script src="./dist/functionDistribution.js"></script> -->
+  <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
