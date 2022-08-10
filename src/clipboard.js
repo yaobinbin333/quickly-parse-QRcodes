@@ -1,5 +1,4 @@
-import qrcodeParser from 'qrcode-parser';
-import { isImage, openOptionsPage, convertToPng, toBoolean } from "./utils";
+import { openOptionsPage, toBoolean } from "./utils";
 import { autoCopy, autoPaste } from './constants';
 import { pasteToEl, copyParseAns } from './settingInfo';
 const input = document.getElementById('content');
@@ -32,22 +31,39 @@ const getQrData = (file) => {
 }
 const writeToClipboard = (val) => {
     const isAutoCopy = toBoolean(localStorage.getItem(autoCopy));
-    if(isAutoCopy) {
+    if (isAutoCopy) {
         copyParseAns(input, val);
     }
     input.value = `二维码内容为：${val}${isAutoCopy ? ',已自动复制到剪贴板' : ''}`;
 }
-const parseQrcode = (data) => {
-    return qrcodeParser(data);
+const showErr = (err) => {
+    console.log('err: ', err);
+    input.value = '解析失败，请确认图片是否是二维码';
 }
-
-const parseAndThen = (img, fitHandle, errHandle) => {
-    console.log('img: ', img);
-    parseQrcode(img).then(qrCodeInfo => {
-        fitHandle(qrCodeInfo);
-    }).catch(err => {
-        errHandle(err, img);
+async function loadImage(url) {
+    return new Promise((resolve, reject) => {
+        let img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+        img.src = url;
+    });
+}
+function localParse(imgData, fitHandle, errHandle) {
+    loadImage(imgData).then(img => {
+        const codeReader = new ZXing.BrowserQRCodeReader();
+        codeReader.decodeFromImage(img).then(result => {
+            fitHandle(result.text);
+        }).catch(err => {
+            errHandle(err);
+        })
     })
+}
+const parseQrcode = (data, fitHandle, errHandle) => {
+    const imgFile = new FileReader();
+    imgFile.onload = (e) => {
+        localParse(e.target.result, fitHandle, errHandle);
+    }
+    imgFile.readAsDataURL(data);
 }
 
 input.addEventListener('paste', (event) => {
@@ -59,22 +75,12 @@ input.addEventListener('paste', (event) => {
             if (items[i].type.indexOf('image') !== -1) {
                 file = items[i].getAsFile();
                 console.log('file: ', file);
-                if (isImage(file)) {
-                    input.value = '正在解析中, 请稍等...';
-                    getQrData(file).then(img => {
-                        const png = convertToPng(img);
-                        png && parseAndThen(png, writeToClipboard, (err) => {
-                            console.log('err: ', err);
-                            input.value = '解析失败，请确认图片是否是二维码';
-                        });
-                    })
-                    return;
-                }
-
+                input.value = '正在解析中, 请稍等...';
+                parseQrcode(file, writeToClipboard, showErr);
             }
         }
     }
     // input.value = '请粘贴图片或者文字';
 });
 const setting = document.getElementById('settings');
-setting.addEventListener('click', openOptionsPage)
+setting.addEventListener('click', openOptionsPage);
