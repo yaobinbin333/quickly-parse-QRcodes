@@ -17,6 +17,14 @@ adm-zip@^0.5.9:
   resolved "https://registry.npmmirror.com/adm-zip/-/adm-zip-0.5.9.tgz#b33691028333821c0cf95c31374c5462f2905a83"
   integrity sha512-s+3fXLkeeLjZ2kLjCBwQufpI5fuN+kIGBxu6530nVQZGVol0d7Y/M88/xw9HGGUcJjKf8LutN3VPRUBq6N7Ajg==
 
+attempt-x@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.npmmirror.com/attempt-x/-/attempt-x-2.1.2.tgz#75c9c801158b46da7411c6a6e1b85aba56cea13d"
+  integrity sha512-vblT/0yT5dmm2qo8mfBjtiu0BGL/HWhxBFTrqHvkjQQSsXb/sTmpYIi1StJGSN5W/TX2E+FsuX7c23ExMZy2jw==
+  dependencies:
+    simple-call-x "^1.0.3"
+    util-pusher-x "^1.0.3"
+
 dropzone@^6.0.0-beta.2:
   version "6.0.0-beta.2"
   resolved "https://registry.npmmirror.com/dropzone/-/dropzone-6.0.0-beta.2.tgz#098be8fa84bdc08674cf0b74f4c889e2679083d6"
@@ -152,7 +160,124 @@ esbuild@^0.14.48:
     esbuild-windows-64 "0.14.54"
     esbuild-windows-arm64 "0.14.54"
 
+has-boxed-string-x@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.npmmirror.com/has-boxed-string-x/-/has-boxed-string-x-2.1.1.tgz#8356e83786969ab9764009bc435c6ac3f4d86b87"
+  integrity sha512-1MmOo3H8UbI6JQ3e3TaxAXHQmpnyrM5DjYRqRXNvjl/UHZqb2fEyfp0UPvtbzvmOf0+sBzcv4ea/LEw87WNyVA==
+
+has-symbol-support-x@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.npmmirror.com/has-symbol-support-x/-/has-symbol-support-x-2.1.2.tgz#1e9b8088cb800d41f3855969c34eba09ccaadfdb"
+  integrity sha512-RpWVMhXSkiJCXI7+bavsapHwlS0VD7rCOSwhzcy0yZzFXxr+FznUBK4OkECVH/EOM1ZoVXw8OzABIEvaEFl+Zg==
+  dependencies:
+    attempt-x "^2.1.2"
+    is-symbol "^1.0.2"
+
+has-symbols@^1.0.2:
+  version "1.0.3"
+  resolved "https://registry.npmmirror.com/has-symbols/-/has-symbols-1.0.3.tgz#bb7b2c4349251dce87b125f7bdf874aa7c8b39f8"
+  integrity sha512-l3LCuF6MgDNwTDKkdYGEihYjt5pRPbEg46rtlmnSPlUbgmB8LOIrKJbYYFBSbnPaJexMKtiPO8hmeRjRz2Td+A==
+
+has-to-string-tag-x@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.npmmirror.com/has-to-string-tag-x/-/has-to-string-tag-x-2.1.2.tgz#23d8074d174149f06352f5a34b619fde286c252f"
+  integrity sha512-xVv4BRcvyT9FAZSzvWD6tzVWj5JHK2d+mcv2wRSIfNBhG534hSfDGPdtx3hHJUE94BufO+pFyVpKbnaC6dsalA==
+  dependencies:
+    has-symbol-support-x "^2.1.2"
+    is-symbol "^1.0.2"
+
+has-tostringtag@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmmirror.com/has-tostringtag/-/has-tostringtag-1.0.0.tgz#7e133818a7d394734f941e73c3d3f9291e658b25"
+  integrity sha512-kFjcSNhnlGV1kyoGk7OXKSawH5JOb/LzUc5w9B02hOTO0dfFRjbHQKvg1d6cf3HbeUmtU9VbbV3qzZ2Teh97WQ==
+  dependencies:
+    has-symbols "^1.0.2"
+
+has-working-bind-x@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmmirror.com/has-working-bind-x/-/has-working-bind-x-1.0.1.tgz#ab8294e347d2b0eb9db22365a1cdd5d3bd0d958f"
+  integrity sha512-iVknmNYk7CdVSDsdIyaeyPNPHlhoESfNEztH9J6kUayhj123M1so039HfC91vAOtR4NyLXWyvaFiNaXvmT/JRQ==
+  dependencies:
+    noop-x "^1.2.1"
+
+is-object@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmmirror.com/is-object/-/is-object-1.0.2.tgz#a56552e1c665c9e950b4a025461da87e72f86fcf"
+  integrity sha512-2rRIahhZr2UWb45fIOuvZGpFtz0TyOZLf32KxBbSoUCeZR495zCKlWUKKUByk3geS2eAs7ZAABt0Y/Rx0GiQGA==
+
+is-primitive-x@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmmirror.com/is-primitive-x/-/is-primitive-x-1.0.1.tgz#0e9b8e4f1bd1ef39d8ad2cc78dbab291b4e7380a"
+  integrity sha512-Z29Qi/aRkELj6LO3LnnSAPN1929UIpY0h0yha5zULYo3VY1Q8hr2ocAE/fVZf22D8LFwoDoGSZwepbk7nvv+Ag==
+
+is-string@^1.0.4:
+  version "1.0.7"
+  resolved "https://registry.npmmirror.com/is-string/-/is-string-1.0.7.tgz#0dd12bf2006f255bb58f695110eff7491eebc0fd"
+  integrity sha512-tE2UXzivje6ofPW7l23cjDOMa09gb7xlAqG6jG5ej6uPV32TlWP3NKPigtaGeHNu9fohccRYvIiZMfOOnOYUtg==
+  dependencies:
+    has-tostringtag "^1.0.0"
+
+is-symbol@^1.0.2:
+  version "1.0.4"
+  resolved "https://registry.npmmirror.com/is-symbol/-/is-symbol-1.0.4.tgz#a6dac93b635b063ca6872236de88910a57af139c"
+  integrity sha512-C/CPBqKWnvdcxqIARxyOh4v1UUEOCHpgDa0WYgpKDFMszcrPcffg5uhwSgPCLD2WWxmq6isisz87tzT01tuGhg==
+  dependencies:
+    has-symbols "^1.0.2"
+
+is-urlsearchparams@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmmirror.com/is-urlsearchparams/-/is-urlsearchparams-1.0.2.tgz#6735b7618af299346e6d664446407218bec2a667"
+  integrity sha512-RrqCHNnM6q7PJ0h0zFaRc7mFGDXoJod2FTIfcSZpjsbLelY47H2js7SY1oc9uS2LMJ1hYBAwnRA3QskuwzcC7Q==
+  dependencies:
+    has-to-string-tag-x "^2.1.2"
+    is-object "^1.0.2"
+
+isurl@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.npmmirror.com/isurl/-/isurl-4.0.2.tgz#3f3edeb9d15c894966415a0baa97a887e13bd435"
+  integrity sha512-k7ifDSe8VfHALfwSeIzOV64EvQsENcMZIHioFhHJO1HUF7ZKnbhW+Dv3LntJoX34fxyoHbvB+MQnM7i4qAHyOQ==
+  dependencies:
+    has-to-string-tag-x "^2.1.2"
+    is-object "^1.0.2"
+    is-urlsearchparams "^1.0.2"
+
 just-extend@^5.0.0:
   version "5.1.1"
   resolved "https://registry.npmmirror.com/just-extend/-/just-extend-5.1.1.tgz#4f33b1fc719964f816df55acc905776694b713ab"
   integrity sha512-b+z6yF1d4EOyDgylzQo5IminlUmzSeqR1hs/bzjBNjuGras4FXq/6TrzjxfN0j+TmI0ltJzTNlqXUMCniciwKQ==
+
+noop-x@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.npmmirror.com/noop-x/-/noop-x-1.2.1.tgz#bcaba2321798f41839614674b3acf7c809536f50"
+  integrity sha512-X+jn3u2YhlAjteZIfrcVxaDLRfnrMvkzQ+jRatOX8UO7PFqU0QKlcyI2DhvLKEK2K4u1cRrZw9QqK3XruvyH2A==
+
+simple-bind-x@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmmirror.com/simple-bind-x/-/simple-bind-x-1.0.3.tgz#05fcab023a5d46213e8358a2ac49cc566ec94495"
+  integrity sha512-UNt+DzNdI/a6dfkpJoGTCarOKnBBNxTwcjrCqQWtHQ5NZtI0fdjL4hB4YtYCbOETGnNw5/e69K6URhSs738KLg==
+  dependencies:
+    has-working-bind-x "^1.0.1"
+    util-pusher-x "^1.0.3"
+
+simple-call-x@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmmirror.com/simple-call-x/-/simple-call-x-1.0.3.tgz#01193b0476993f9ed2eaaff522f70d943399ebb5"
+  integrity sha512-f80t0ft82q15coHABjl95mnqCDIkpxLeQzfwdwtc0bx0FTnsS8uKDseyY0Pxa2O6Oh5Lpe2QKG2Q3NXWPjxEMQ==
+  dependencies:
+    simple-bind-x "^1.0.3"
+    util-pusher-x "^1.0.3"
+
+util-pusher-x@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmmirror.com/util-pusher-x/-/util-pusher-x-1.0.3.tgz#c5b27cb4fe35002ecc96c203bff6dbc01a645285"
+  integrity sha512-+hCPl/DrppZRn/RHYnUcNwckR4h5s06pUELCSGEMhdYSy7N6dIfvozR482w5j2+eKfXvDISL/QNlTnRPB2skDw==
+  dependencies:
+    has-boxed-string-x "^2.1.1"
+    has-working-bind-x "^1.0.1"
+    is-primitive-x "^1.0.1"
+    is-string "^1.0.4"
+
+valid-url@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.npmmirror.com/valid-url/-/valid-url-1.0.9.tgz#1c14479b40f1397a75782f115e4086447433a200"
+  integrity sha512-QQDsV8OnSf5Uc30CKSwG9lnhMPe6exHtTXLRYX8uMwKENy640pU+2BgBL0LRbDh/eYRahNCS7aewCx0wf3NYVA==

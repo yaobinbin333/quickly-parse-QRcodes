@@ -1,5 +1,5 @@
 import {autoCopy, autoJump, autoPaste} from './constants';
-
+import validUrl from 'valid-url';
 const setDefault = (key, value) => {
     if (localStorage.getItem(key) === null) {
         localStorage.setItem(key, value);
@@ -18,4 +18,10 @@ export const copyParseAns = (el, ans) => {
     el.value = ans;
     el.select();
     document.execCommand('copy');
+}
+export const jumpToUrl = (url) => {
+    console.log('url: ', url);
+    if (validUrl.isUri(url)) {
+        window.open(url);
+    }
 }

@@ -1,6 +1,6 @@
 import { openOptionsPage, toBoolean } from "./utils";
-import { autoCopy, autoPaste } from './constants';
-import { pasteToEl, copyParseAns } from './settingInfo';
+import { autoCopy, autoJump, autoPaste, urlJudgeWord } from './constants';
+import { pasteToEl, copyParseAns, jumpToUrl } from './settingInfo';
 const input = document.getElementById('content');
 input.focus();
 const isAutoPaste = toBoolean(localStorage.getItem(autoPaste));
@@ -31,8 +31,12 @@ const getQrData = (file) => {
 }
 const writeToClipboard = (val) => {
     const isAutoCopy = toBoolean(localStorage.getItem(autoCopy));
+    const isAutoJump = toBoolean(localStorage.getItem(autoJump));
     if (isAutoCopy) {
         copyParseAns(input, val);
+    }
+    if(isAutoJump) {
+        jumpToUrl(val);
     }
     input.value = `二维码内容为：${val}${isAutoCopy ? ',已自动复制到剪贴板' : ''}`;
 }
