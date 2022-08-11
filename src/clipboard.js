@@ -35,7 +35,7 @@ const writeToClipboard = (val) => {
     if (isAutoCopy) {
         copyParseAns(input, val);
     }
-    if(isAutoJump) {
+    if (isAutoJump) {
         jumpToUrl(val);
     }
     input.value = `二维码内容为：${val}${isAutoCopy ? ',已自动复制到剪贴板' : ''}`;
@@ -43,6 +43,26 @@ const writeToClipboard = (val) => {
 const showErr = (err) => {
     console.log('err: ', err);
     input.value = '解析失败，请确认图片是否是二维码';
+}
+async function BrowserBarcodeDetector(imgel) {
+    if (BarcodeDetector) {
+        try {
+            const supportedFormats = await BarcodeDetector.getSupportedFormats();
+            if (supportedFormats.includes("qr_code")) {
+                console.log('supportedFormats: ', supportedFormats);
+                let barcodeDetector = new BarcodeDetector();
+                const result = await barcodeDetector.detect(imgel);
+                for (let res of result) {
+                    if (res.rawValue) {
+                        return res.rawValue;
+                    }
+                }
+            }
+        } catch (error) {
+            return null;
+        }
+    }
+    return null;
 }
 async function loadImage(url) {
     return new Promise((resolve, reject) => {
@@ -52,14 +72,17 @@ async function loadImage(url) {
         img.src = url;
     });
 }
-function localParse(imgData, fitHandle, errHandle) {
-    loadImage(imgData).then(img => {
-        const codeReader = new ZXing.BrowserQRCodeReader();
-        codeReader.decodeFromImage(img).then(result => {
-            fitHandle(result.text);
-        }).catch(err => {
-            errHandle(err);
-        })
+async function localParse(imgData, fitHandle, errHandle) {
+    const image = await loadImage(imgData);
+    const barcode = await BrowserBarcodeDetector(image);
+    if (barcode) {
+        return fitHandle(barcode);
+    }
+    const codeReader = new ZXing.BrowserQRCodeReader();
+    codeReader.decodeFromImage(image).then(result => {
+        fitHandle(result.text);
+    }).catch(err => {
+        errHandle(err);
     })
 }
 const parseQrcode = (data, fitHandle, errHandle) => {
