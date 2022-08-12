@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib",
+    "rootDir": "./src",
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "lib": ["es2016", "dom"],
+    "target": "es6",
+    "allowJs": true,
+    "sourceMap": true,
+    "strict": false,
+    "declaration": true,
+    "esModuleInterop": true,
+  },
+  "include": ["src", "src/index.d.ts"],
+  "exclude": ["node_modules", "lib", "dist", "tests", "*.json", "*.js", "webpack.config.js"]
+}

@@ -1,4 +1,4 @@
-import {getCurPageQrcode} from './buildQrcode';
+import {getCurPageQrcode} from './controller/buildQrcode';
 const functionGroup = document.getElementById('funcGroup');
 const functionIdMap = ['parseQrcodeWrap', 'buildQrcodeWrap'];
 functionGroup.addEventListener('click', (event) => {

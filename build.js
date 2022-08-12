@@ -14,8 +14,7 @@ const createZip = () => {
 }
 require("esbuild")
   .build({
-    entryPoints: ["src/index.js", "options/index.js"],
-    bundle: true,
+    entryPoints: ["src/index.js", "src/controller/options.ts"],
     platform: "browser",
     treeShaking: false,
     outdir: `${MAIN_JS_PATH}/dist`,
