@@ -1,6 +1,7 @@
 // 配置
 import {Saver} from "./Saver";
 import {toBoolean} from "../utils";
+import {autoCopy} from "../constants";
 type notObject = boolean | string | number | undefined | null;
 
 export class Configurer extends Saver{
@@ -15,7 +16,7 @@ export class Configurer extends Saver{
     constructor(configs?: Config[]) {
         super();
         this.configs = configs;
-        if(configs) {
+        if(this.getValue(autoCopy) === null) {
             this.setDefault();
         }
     }
@@ -40,5 +41,4 @@ export class Configurer extends Saver{
             this.initialSave(config.type, config.defaultValue)
         })
     }
-
 }

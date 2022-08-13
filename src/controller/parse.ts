@@ -76,4 +76,3 @@ class Parse extends Prompt{
 new Parse(document.getElementById('content') as HTMLInputElement);
 const setting = document.getElementById('settings');
 setting.addEventListener('click', openOptionsPage);
-// todo: 打开自动获取焦点
