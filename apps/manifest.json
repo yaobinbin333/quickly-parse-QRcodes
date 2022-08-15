@@ -1,11 +1,21 @@
 {
     "name": "Quickly parse QR codes",
     "description": "A extension help you resolve quickly QR code visa paste qrcode image, not drag and drop image. Also can generate QR code image.",
-    "version": "1.1",
+    "version": "1.2",
     "manifest_version": 3,
     "action": {
         "default_popup": "popup.html",
         "default_icon": "qrcode.png"
+    },
+    "locale": {
+        "en": {
+            "name": "Quickly parse QR codes",
+            "description": "A extension help you resolve quickly QR code visa paste qrcode image, not drag and drop image. Also can generate QR code image.Also your data is all handled locally and not uploaded to the server, absolutely safe."
+        },
+        "zh": {
+            "name": "快速解析二维码",
+            "description": "一个帮助你快速解析二维码的扩展，可以解析粘贴的二维码，也可以生成二维码图片。同时您的数据全部本地处理，不会上传到服务器，绝对安全。"
+        }
     },
     "content_scripts": [
         {
