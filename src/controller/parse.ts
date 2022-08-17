@@ -4,6 +4,7 @@ import {Configurer} from "../model/Configurer";
 import {Prompt} from "../model/Prompt";
 import {SettingController} from "./setting";
 import {openOptionsPage} from "../utils";
+import {render} from "../functionDistribution";
 class Parse extends Prompt{
   container: HTMLInputElement;
   parser: Parser;
@@ -34,17 +35,21 @@ class Parse extends Prompt{
   addPasteEvent = () => {
     this.container.addEventListener('paste', (event) => {
       const items = event.clipboardData && event.clipboardData.items;
-      let file = null;
+      let file = null, isImage = false;
       if (items && items.length) {
         // 检索剪切板items
         for (let i = 0; i < items.length; i++) {
           if (items[i].type.indexOf('image') !== -1) {
+            isImage = true;
             file = items[i].getAsFile();
             console.log('file: ', file);
             this.container.value = '正在解析中, 请稍等...';
             this.parseQrcode(file);
           }
         }
+      }
+      if(!isImage) {
+        render(1);
       }
       // input.value = '请粘贴图片或者文字';
     });
