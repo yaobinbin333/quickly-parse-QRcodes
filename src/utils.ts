@@ -5,6 +5,20 @@ export const openOptionsPage = () => {
     chrome.runtime.openOptionsPage();
     window.close();
 }
+export const debounce = (func: Function, delay: number) => {
+    let timer: any;
+    return function (...args: any[]) {
+        if (timer) {
+            clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+            func.apply(this, args);
+        }, delay);
+    }
+}
+export const convertBase64ToBlob = (base64: string) => {
+    return fetch(base64).then(res => res.blob())
+}
 // 把image 转换为 canvas对象
 const imgToCanvas =(image: any) => {
     const canvas = document.createElement("canvas");
