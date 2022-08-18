@@ -4,19 +4,7 @@ const copyQrcodeButton = document.getElementById('copyQrcode');
 const urlConiner = document.getElementById('urlConiner') as HTMLInputElement;
 
 const builder = new Builder(document.getElementById('qrcodeWrap'));
-function handleCopyImg(img: HTMLImageElement) {
-    const selection = window.getSelection();
-    // 清除选中
-    if (selection.rangeCount > 0) selection.removeAllRanges();
-    // https://developer.mozilla.org/zh-CN/docs/Web/API/Document/queryCommandSupported
-    if(!document.queryCommandSupported('copy')) return alert('浏览器暂不支持复制命令');
-    // 创建range区域
-    const range = document.createRange();
-    range.selectNode(img);
-    selection.addRange(range);
-    document.execCommand("copy");
-    selection.removeAllRanges();
-}
+
 copyQrcodeButton.addEventListener('click', () => {
     let qrcode = document.querySelector('#qrcodeWrap img') as HTMLImageElement;
     const blobImage = convertBase64ToBlob(qrcode.src)
@@ -25,9 +13,13 @@ copyQrcodeButton.addEventListener('click', () => {
     })
     if(navigator.clipboard) {
         navigator.clipboard.write([clipboard]);
+        copyQrcodeButton.innerHTML = '已复制';
     }else {
-        urlConiner.value = '您的浏览器版本不支持复制图片功能，请升级浏览器版本～';
+        copyQrcodeButton.innerHTML = '复制失败，请手动复制';
     }
+})
+copyQrcodeButton.addEventListener('blur', () => {
+    copyQrcodeButton.innerHTML = '复制二维码';
 })
 const inputBuild = debounce(() => {
     builder.buildQrcode(urlConiner.value)
