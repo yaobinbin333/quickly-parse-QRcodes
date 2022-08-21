@@ -20,6 +20,9 @@ export const render = (clickFunc) => {
                     if(index === 1) {
                         getCurPageQrcode();
                     }
+                    if(index === 0) {
+                        document.getElementById('content').focus();
+                    }
                 }else {
                     funcInterface.style.display = 'none';
                 }

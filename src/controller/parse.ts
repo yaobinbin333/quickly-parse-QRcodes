@@ -9,12 +9,14 @@ class Parse extends Prompt{
   container: HTMLInputElement;
   parser: Parser;
   config: Configurer;
+  isInit: boolean;
   constructor(container: HTMLInputElement) {
     super(container);
     this.container = container;
     this.container.focus();
     new SettingController();
     this.addPasteEvent();
+    this.isInit = true;
     this.config = Configurer.getInstance();
 
     this.config.emit(autoPaste, this.container);
@@ -48,8 +50,9 @@ class Parse extends Prompt{
           }
         }
       }
-      if(!isImage) {
+      if(!isImage && this.isInit) {
         render(1);
+        this.isInit = false;
       }
       // input.value = '请粘贴图片或者文字';
     });
