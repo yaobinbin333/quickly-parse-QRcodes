@@ -84,3 +84,8 @@ class Parse extends Prompt{
 new Parse(document.getElementById('content') as HTMLInputElement);
 const setting = document.getElementById('settings');
 setting.addEventListener('click', openOptionsPage);
+
+const readMe = document.getElementById('readMe');
+readMe.addEventListener('click', () => {
+  chrome.tabs.create({url: 'https://github.com/yaobinbin333/quickly-parse-QRcodes/blob/main/readme.md'});
+})
