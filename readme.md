@@ -7,8 +7,9 @@
 3. 点击插件/使用默认快捷键：command/ctrl + Shift + L
 
 ### 快捷键不生效
-chrome：打开链接：chrome://extensions/shortcuts。[chrome插件设置](chrome://extensions/shortcuts)
-edge：打开链接：edge://extensions/shortcuts。[edge插件设置](edge://extensions/shortcuts)
+chrome：打开链接：<chrome://extensions/shortcuts>。[chrome插件设置](chrome://extensions/shortcuts)
+
+edge：打开链接：<edge://extensions/shortcuts>。[edge插件设置](edge://extensions/shortcuts)
 设置激活扩展快捷键即可：如图
 ![setting](sources/settingShortcut.jpg)
 
