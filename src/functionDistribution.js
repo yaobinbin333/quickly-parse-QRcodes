@@ -1,3 +1,4 @@
+import { BuildPage, ParsePage } from './constants';
 import {getCurPageQrcode} from './controller/buildQrcode';
 const functionGroup = document.getElementById('funcGroup');
 const functionIdMap = ['parseQrcodeWrap', 'buildQrcodeWrap'];
@@ -17,10 +18,10 @@ export const render = (clickFunc) => {
                 const funcInterface = document.getElementById(functionIdMap[index]);
                 if (index == clickFunc) {
                     funcInterface.style.display = 'block';
-                    if(index === 1) {
+                    if(index === BuildPage) {
                         getCurPageQrcode();
                     }
-                    if(index === 0) {
+                    if(index === ParsePage) {
                         document.getElementById('content').focus();
                     }
                 }else {

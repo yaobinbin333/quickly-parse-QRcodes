@@ -1,4 +1,4 @@
-import { autoCopy, autoJump, autoPaste } from '../constants';
+import { autoCopy, autoJump, autoPaste, BuildPage } from '../constants';
 import {Parser} from "../model/Parser";
 import {Configurer} from "../model/Configurer";
 import {Prompt} from "../model/Prompt";
@@ -10,6 +10,7 @@ class Parse extends Prompt{
   parser: Parser;
   config: Configurer;
   isInit: boolean;
+  parseTime: number;
   constructor(container: HTMLInputElement) {
     super(container);
     this.container = container;
@@ -18,7 +19,7 @@ class Parse extends Prompt{
     this.addPasteEvent();
     this.isInit = true;
     this.config = Configurer.getInstance();
-
+    this.parseTime = 0;
     this.config.emit(autoPaste, this.container);
 
   }
@@ -51,7 +52,7 @@ class Parse extends Prompt{
         }
       }
       if(!isImage && this.isInit) {
-        render(1);
+        render(BuildPage);
         this.isInit = false;
       }
       // input.value = '请粘贴图片或者文字';
@@ -59,6 +60,7 @@ class Parse extends Prompt{
   }
   parseQrcode(fileData: File) {
     const imgFile = new FileReader();
+    this.parseTime += 1;
     imgFile.onload = async (e) => {
       const image = await this.loadImage(e.target.result as string);
       this.parser = new Parser(image);
@@ -69,11 +71,15 @@ class Parse extends Prompt{
           this.config.emit(autoJump, res);
           this.container.value = `二维码内容为：${res}${this.config.getValue(autoPaste) ? ',已自动复制到剪贴板' : ''}`;
         }else {
-          this.err();
+          if(this.parseTime <= 1) {
+            render(BuildPage);
+          } else this.err();
         }
       }catch (err) {
         console.log('err', err);
-        this.err();
+        if(this.parseTime <= 1) {
+          render(BuildPage);
+        } else this.err();
       }
 
     }
