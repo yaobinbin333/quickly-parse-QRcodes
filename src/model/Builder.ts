@@ -1,23 +1,22 @@
-// @ts-ignore
-import QRCode from '../qrcode'
+import QRCode from 'qrcode';
 // 构造二维码
+var canvas = document.getElementById('canvas');
+
 export class Builder {
-    container: HTMLElement;
-    constructor(ele: HTMLElement) {
+    container: HTMLCanvasElement;
+    constructor(ele: HTMLCanvasElement) {
         this.container = ele;
+        console.log('curEle', ele);
+        
     }
     buildQrcode(content: string) {
         this.container.innerHTML = '';
-        try {
-            // @ts-ignore
-            new QRCode(this.container, {
-                text: content,
-                width: 260,
-                height: 260,
-            });
-        }catch (err) {
-            console.log('err: ', err);
+        QRCode.toCanvas(this.container, content, {
+            width: 260,
+            margin: 0.5,
+        }).catch(error => {
+            console.log('err: ', error);
             this.container.innerHTML = '生成二维码失败，请查看内容是否正确';
-        }
+        })
     }
 }

@@ -10,11 +10,13 @@
   "author": "yaobinbin",
   "license": "ISC",
   "devDependencies": {
+    "@types/qrcode": "^1.5.0",
     "adm-zip": "^0.5.9",
     "esbuild": "^0.14.48"
   },
   "dependencies": {
     "dropzone": "^6.0.0-beta.2",
+    "qrcode": "^1.5.1",
     "valid-url": "^1.0.9"
   }
 }

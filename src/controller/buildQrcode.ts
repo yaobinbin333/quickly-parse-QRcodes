@@ -3,10 +3,15 @@ import {convertBase64ToBlob, debounce} from "../utils";
 const copyQrcodeButton = document.getElementById('copyQrcode');
 const urlConiner = document.getElementById('urlConiner') as HTMLInputElement;
 
-const builder = new Builder(document.getElementById('qrcodeWrap'));
+const builder = new Builder(document.getElementById('qrcode') as HTMLCanvasElement);
 
+const changeCanvasToimg = (canvas: HTMLCanvasElement) => {
+    const img = document.createElement('img');
+    img.src = canvas.toDataURL('image/png');
+    return img;
+}
 copyQrcodeButton.addEventListener('click', () => {
-    let qrcode = document.querySelector('#qrcodeWrap img') as HTMLImageElement;
+    let qrcode = changeCanvasToimg(document.querySelector('#qrcodeWrap #qrcode'));
     const blobImage = convertBase64ToBlob(qrcode.src)
     const clipboard = new ClipboardItem({
         "image/png": blobImage
