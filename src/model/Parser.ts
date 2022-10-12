@@ -1,7 +1,11 @@
 import { Prompt } from './Prompt';
+import { Decoder } from '@nuintun/qrcode';
+
 // 解析二维码
 export class Parser{
     img: HTMLImageElement;
+    // 函数执行超时时间
+    overTime = 2000;
     constructor(img: HTMLImageElement) {
         this.img = img;
     }
@@ -11,7 +15,7 @@ export class Parser{
         if (browserAns) {
            return browserAns;
         }
-        return this.parseWithZxing();
+        return this.parseWithNiuTuan();
     }
 
     async parseWithBrowser() {
@@ -35,13 +39,30 @@ export class Parser{
         }
         return null;
     }
-    async parseWithZxing() {
-        const codeReader = new ZXing.BrowserQRCodeReader();
+    async parseWithNiuTuan() {
+        const qrcode = new Decoder();
+        
         try {
-            const res =  await codeReader.decodeFromImage(this.img);
-            return res.text;
+            const res = await qrcode.scan(this.img.src);
+            console.log('32',res.data);
+            return res.data;
         } catch (error) {
+            console.error('niutuan',error);
             return null;
         }
+    }
+    overTimeHandle(func): Promise<any> {
+        return new Promise((resolve, reject) => {
+            const timer = setTimeout(() => {
+                reject('timeout');
+            }, this.overTime);
+            func().then(res => {
+                clearTimeout(timer);
+                resolve(res);
+            }).catch(err => {
+                clearTimeout(timer);
+                reject(err);
+            })
+        })
     }
 }

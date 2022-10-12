@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "./lib",
     "rootDir": "./src",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "module": "commonjs",
     "lib": ["es2016", "dom"],
     "target": "es6",

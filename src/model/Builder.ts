@@ -6,7 +6,6 @@ export class Builder {
     container: HTMLCanvasElement;
     constructor(ele: HTMLCanvasElement) {
         this.container = ele;
-        console.log('curEle', ele);
         
     }
     buildQrcode(content: string) {
