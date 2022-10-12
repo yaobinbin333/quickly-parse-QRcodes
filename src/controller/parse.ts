@@ -72,6 +72,7 @@ class Parse extends Prompt{
           this.container.value = `二维码内容为：${res}${this.config.getValue(autoPaste) ? ',已自动复制到剪贴板' : ''}`;
         }else {
           if(this.parseTime <= 1) {
+            this.container.value = '';
             render(BuildPage);
           } else this.err();
         }
