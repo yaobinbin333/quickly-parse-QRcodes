@@ -19,7 +19,7 @@ export class Parser{
     }
 
     async parseWithBrowser() {
-        if (BarcodeDetector) {
+        if (typeof BarcodeDetector === 'object') {
             try {
                 const supportedFormats = await BarcodeDetector.getSupportedFormats();
                 if (supportedFormats.includes("qr_code")) {
@@ -40,9 +40,8 @@ export class Parser{
         return null;
     }
     async parseWithNiuTuan() {
-        const qrcode = new Decoder();
-        
         try {
+            const qrcode = new Decoder();
             const res = await qrcode.scan(this.img.src);
             console.log('32',res.data);
             return res.data;
